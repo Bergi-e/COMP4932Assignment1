@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMP 4932 - Image Blending</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            margin-top: 50px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #555;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+        }
+        .slider-container {
+            margin-top: 30px;
+        }
+        input[type="range"] {
+            width: 300px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Assignment 1: Image Blending</h1>
+        
+        <img id="morphImage" src="output/blended_t1.jpg" alt="Blended Image at t1">
+
+        <div class="slider-container">
+            <label for="timeSlider">Time Step: <strong>t<span id="tLabel">1</span></strong></label>
+            <br><br>
+            <input type="range" id="timeSlider" min="1" max="8" value="1" step="1">
+        </div>
+    </div>
+
+    <script>
+        const slider = document.getElementById('timeSlider');
+        const img = document.getElementById('morphImage');
+        const label = document.getElementById('tLabel');
+
+        // Update the image source whenever the slider is moved
+        slider.addEventListener('input', function() {
+            const t = this.value;
+            img.src = `output/blended_t${t}.jpg`;
+            label.textContent = t;
+        });
+    </script>
+</body>
+</html>
